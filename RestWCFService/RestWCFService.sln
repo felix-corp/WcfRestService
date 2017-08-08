@@ -7,6 +7,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RestWCFServiceLibrary", "Re
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RestWCFServiceHost", "RestWCFServiceHost\RestWCFServiceHost.csproj", "{7E1A0134-ABE9-457B-B16E-B512B3623B51}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DataEntity", "DataEntity\DataEntity.csproj", "{4093B5A7-4A48-4E30-9AE9-43AB7436C355}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -21,6 +23,10 @@ Global
 		{7E1A0134-ABE9-457B-B16E-B512B3623B51}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{7E1A0134-ABE9-457B-B16E-B512B3623B51}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{7E1A0134-ABE9-457B-B16E-B512B3623B51}.Release|Any CPU.Build.0 = Release|Any CPU
+		{4093B5A7-4A48-4E30-9AE9-43AB7436C355}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{4093B5A7-4A48-4E30-9AE9-43AB7436C355}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{4093B5A7-4A48-4E30-9AE9-43AB7436C355}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{4093B5A7-4A48-4E30-9AE9-43AB7436C355}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

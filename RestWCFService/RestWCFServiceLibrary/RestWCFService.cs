@@ -4,6 +4,7 @@ using System.Linq;
 using System.Runtime.Serialization;
 using System.ServiceModel;
 using System.Text;
+using DataEntity;
 
 namespace RestWCFServiceLibrary
 {
@@ -17,7 +18,20 @@ namespace RestWCFServiceLibrary
 
         private string Data(string id)
         {
-            return "Data: " + id; 
+            string firstName = "";
+            using (BetaDBEntities context = new BetaDBEntities())
+            {
+                var empQuery = from emp in context.Departments select emp;
+
+                List<Department> employeelist = empQuery.ToList();
+                int index = -1;
+                int.TryParse(id, out index);
+                firstName = employeelist[index].Location;
+            }
+
+            return "FirstName: " + firstName ; 
+
+
         }
     }
 }
