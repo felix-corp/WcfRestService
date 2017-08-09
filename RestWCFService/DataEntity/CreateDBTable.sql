@@ -27,3 +27,26 @@ Insert into Employees values ('Mary', 'Lambeth', 'Female', 30000, 2)
 
 select * from dbo.Departments
 select * from dbo.Employees
+
+Create procedure spGetEmployee
+@Id int
+as
+Begin
+	Select ID, FirstName, LastName, Gender, Salary, DepartmentId
+	from dbo.Employees
+	where ID = @Id
+
+End
+
+Create procedure spSaveEmployee
+@ID int,
+@FirstName nvarchar(50),
+@LastName nvarchar(50),
+@Gender nvarchar(50),
+@Salary int,
+@DepartmentId int
+as
+Begin
+	Insert into dbo.Employees
+	values(@ID, @FirstName, @LastName, @Gender, @Salary, @DepartmentId)
+End

@@ -16,7 +16,7 @@ namespace RestWCFServiceLibrary
         [WebInvoke(Method = "GET" ,
             ResponseFormat = WebMessageFormat.Json,
             BodyStyle =WebMessageBodyStyle.Wrapped,
-            UriTemplate = "json/{id}")]
+            UriTemplate = "GetData/{id}")]
         string GetData(string id);
 
     }

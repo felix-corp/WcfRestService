@@ -21,17 +21,13 @@ namespace RestWCFServiceLibrary
             string firstName = "";
             using (BetaDBEntities context = new BetaDBEntities())
             {
-                var empQuery = from emp in context.Departments select emp;
-
-                List<Department> employeelist = empQuery.ToList();
                 int index = -1;
                 int.TryParse(id, out index);
-                firstName = employeelist[index].Location;
+                var emp = context.spGetEmployee(index).FirstOrDefault();
+                firstName = emp.FirstName;
             }
 
             return "FirstName: " + firstName ; 
-
-
         }
     }
 }

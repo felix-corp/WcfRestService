@@ -12,6 +12,8 @@ namespace DataEntity
     using System;
     using System.Data.Entity;
     using System.Data.Entity.Infrastructure;
+    using System.Data.Entity.Core.Objects;
+    using System.Linq;
     
     public partial class BetaDBEntities : DbContext
     {
@@ -27,5 +29,39 @@ namespace DataEntity
     
         public virtual DbSet<Department> Departments { get; set; }
         public virtual DbSet<Employee> Employees { get; set; }
+    
+        public virtual ObjectResult<spGetEmployee_Result> spGetEmployee(Nullable<int> id)
+        {
+            var idParameter = id.HasValue ?
+                new ObjectParameter("Id", id) :
+                new ObjectParameter("Id", typeof(int));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<spGetEmployee_Result>("spGetEmployee", idParameter);
+        }
+    
+        public virtual int spSaveEmployee(string firstName, string lastName, string gender, Nullable<int> salary, Nullable<int> departmentId)
+        {
+            var firstNameParameter = firstName != null ?
+                new ObjectParameter("FirstName", firstName) :
+                new ObjectParameter("FirstName", typeof(string));
+    
+            var lastNameParameter = lastName != null ?
+                new ObjectParameter("LastName", lastName) :
+                new ObjectParameter("LastName", typeof(string));
+    
+            var genderParameter = gender != null ?
+                new ObjectParameter("Gender", gender) :
+                new ObjectParameter("Gender", typeof(string));
+    
+            var salaryParameter = salary.HasValue ?
+                new ObjectParameter("Salary", salary) :
+                new ObjectParameter("Salary", typeof(int));
+    
+            var departmentIdParameter = departmentId.HasValue ?
+                new ObjectParameter("DepartmentId", departmentId) :
+                new ObjectParameter("DepartmentId", typeof(int));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("spSaveEmployee", firstNameParameter, lastNameParameter, genderParameter, salaryParameter, departmentIdParameter);
+        }
     }
 }
